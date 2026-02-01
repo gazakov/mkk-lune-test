@@ -1,7 +1,6 @@
 from typing import List, Optional
 from pydantic import BaseModel, ConfigDict, field_validator
 
-# --- Building Schemas ---
 class BuildingBase(BaseModel):
     address: str
     latitude: float
@@ -28,7 +27,6 @@ class BuildingRead(BuildingBase):
     id: int
     model_config = ConfigDict(from_attributes=True)
 
-# --- Activity Schemas ---
 class ActivityBase(BaseModel):
     name: str
 
@@ -43,7 +41,6 @@ class ActivityRead(ActivityBase):
 class ActivityTree(ActivityRead):
     children: List["ActivityTree"] = []
 
-# --- Organization Phone Schemas ---
 class PhoneBase(BaseModel):
     number: str
 
@@ -54,7 +51,6 @@ class PhoneRead(PhoneBase):
     id: int
     model_config = ConfigDict(from_attributes=True)
 
-# --- Organization Schemas ---
 class OrganizationBase(BaseModel):
     name: str
     building_id: int
